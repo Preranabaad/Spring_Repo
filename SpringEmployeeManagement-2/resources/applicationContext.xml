@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	
+	<bean id="employee" class="com.lti.model.Employee" scope="prototype">
+		<property name="employeeId" value="100"></property>
+		<property name="employeeName" value="Makarand"></property>
+		<property name="employeeSalary" value="5000"></property>
+	</bean>
+	
+	<bean id="service" class="com.lti.service.EmployeeServiceImpl" scope="singleton">
+	 	<property name="dao" ref="dao"></property>
+	</bean>
+	<bean id="dao" class="com.lti.dao.EmployeeDaoImpl" scope="singleton">
+		<property name="template" ref="template"></property>
+	</bean>
+	<bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="DS"></property>
+	</bean>
+	<bean id="DS" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"></property>
+		<property name="username" value="hr"></property>
+		<property name="password" value="hr"></property>
+	</bean>
+</beans>

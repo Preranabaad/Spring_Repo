@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	
+	
+	<bean id="employee" class="com.lti.model.Employee" scope="prototype">
+		<property name="employeeId" value="1000"></property>
+		<property name="employeeName" value="Makarand"></property>
+		<property name="employeeSalary" value="5000"></property>	
+		<property name="address" ref="address"></property>
+	</bean>
+	<bean id="address" class="com.lti.model.Address" scope="prototype" >
+		<property name="street" value="ABC road"></property>
+		<property name="city" value="Mumbai"></property>
+		<property name="pin" value="400706"></property>
+	
+	</bean>
+
+</beans>
